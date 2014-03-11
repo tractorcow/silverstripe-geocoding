@@ -1,0 +1,23 @@
+{
+	"name": "tractorcow/silverstripe-geocoding",
+	"description": "Google maps geocoding wrapper for Silverstripe",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "google", "maps", "geocoding", "geocode"],
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Damian Mooyman",
+			"email": "damian.mooyman@gmail.com"
+		}
+	],
+	"support": {
+		"issues": "http://github.com/tractorcow/silverstripe-geocoding/issues"
+	},
+	"require": {
+		"silverstripe/framework": "3.*",
+		"composer/installers": "*"
+	},
+	"extra": {
+		"installer-name": "geocoding"
+	}
+}

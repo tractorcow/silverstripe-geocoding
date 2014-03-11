@@ -1,0 +1,10 @@
+---
+Name: geocoding
+---
+Injector:
+  GeocodingService:
+    class: CachedGeocodingService
+    constructor:
+      - %$BackendGeocodingService
+  BackendGeocodingService:
+    class: GeocodingService
