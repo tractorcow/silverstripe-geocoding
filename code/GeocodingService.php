@@ -18,7 +18,7 @@ class GeocodingService implements IGeocodingService {
 	 * Marks as over daily limit
 	 */
 	protected function markLimit() {
-		$this->getCache()->save(time(), 'dailyLimit', array(), null);
+		$this->getCache()->save((string)time(), 'dailyLimit', array(), null);
 	}
 	
 	public function isOverLimit() {
