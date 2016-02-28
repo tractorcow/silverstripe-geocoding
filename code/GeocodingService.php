@@ -21,19 +21,27 @@ class GeocodingService implements IGeocodingService {
 		$this->getCache()->save((string)time(), 'dailyLimit', array(), null);
 	}
 	
+	
+	/**
+	 * Check if this service is over the daily limit.
+	 * 
+	 * @return bool True if this service has exceeded it's limit within the last 24 hours.
+	 * False if the service is allowed to make additional requests.
+	 */
 	public function isOverLimit() {
 		$limit = $this->getCache()->load('dailyLimit');
 		if(empty($limit)) return false;
 		
-		// It's ok if it's been 24 hours
-		return (time() - $limit) > (3600 * 24);
+		// This service has exceeded the limit if the last limit was reached less than 24 hours ago 
+		$lastLimited = time() - $limit;
+		return $lastLimited < (3600 * 24);
 	}
 	
 	public function normaliseAddress($address) {
 		if(is_array($address)) {
 			$address = implode(', ', $address);
 		}
-        return trim(preg_replace('/\n+/', ', ', $address));
+		return trim(preg_replace('/\n+/', ', ', $address));
 	}
 	
 	/**
